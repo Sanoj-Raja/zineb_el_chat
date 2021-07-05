@@ -18,7 +18,7 @@ class LoginAndSignupView extends GetView<LoginAndSignupController> {
           children: [
             upperTextAndImageContainer(),
             loginAndSignupCard(context),
-            arrowButtonForLoginAndSignup(true),
+            arrowButtonForLoginAndSignup(),
             bottomGoogleLoginButton()
           ],
         ),
@@ -358,7 +358,7 @@ class LoginAndSignupView extends GetView<LoginAndSignupController> {
     );
   }
 
-  Widget arrowButtonForLoginAndSignup(bool showShadow) {
+  Widget arrowButtonForLoginAndSignup() {
     return Obx(
       () => AnimatedPositioned(
         duration: Duration(milliseconds: 700),
@@ -369,40 +369,43 @@ class LoginAndSignupView extends GetView<LoginAndSignupController> {
         right: 0,
         left: 0,
         child: Center(
-          child: Container(
-            height: 90,
-            width: 90,
-            padding: EdgeInsets.all(15),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(50),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(.3),
-                  spreadRadius: 1.5,
-                  blurRadius: 10,
-                )
-              ],
-            ),
+          child: InkWell(
+            onTap: controller.onArrowButtonPress,
             child: Container(
+              height: 90,
+              width: 90,
+              padding: EdgeInsets.all(15),
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    colors: [Colors.orange[200], Colors.red[400]],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight),
-                borderRadius: BorderRadius.circular(30),
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(50),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(.3),
-                    spreadRadius: 1,
-                    blurRadius: 2,
-                    offset: Offset(0, 1),
+                    spreadRadius: 1.5,
+                    blurRadius: 10,
                   )
                 ],
               ),
-              child: Icon(
-                Icons.arrow_forward,
-                color: Colors.white,
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: [Colors.orange[200], Colors.red[400]],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight),
+                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(.3),
+                      spreadRadius: 1,
+                      blurRadius: 2,
+                      offset: Offset(0, 1),
+                    )
+                  ],
+                ),
+                child: Icon(
+                  Icons.arrow_forward,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),
@@ -416,24 +419,27 @@ class LoginAndSignupView extends GetView<LoginAndSignupController> {
       top: Get.height * .85,
       right: 0,
       left: 0,
-      child: Container(
-        margin: EdgeInsets.only(right: 20, left: 20, top: 15),
-        child: Obx(
-          () => Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              controller.isSignupScreen.value
-                  ? buildTextButton(
-                      MaterialCommunityIcons.google_plus,
-                      'Sign up with Google',
-                      AppColors.googleIconColor,
-                    )
-                  : buildTextButton(
-                      MaterialCommunityIcons.google_plus,
-                      'Log in with Google',
-                      AppColors.googleIconColor,
-                    ),
-            ],
+      child: InkWell(
+        onTap: controller.onArrowButtonPress,
+        child: Container(
+          margin: EdgeInsets.only(right: 20, left: 20, top: 15),
+          child: Obx(
+            () => Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                controller.isSignupScreen.value
+                    ? buildTextButton(
+                        MaterialCommunityIcons.google_plus,
+                        'Sign up with Google',
+                        AppColors.googleIconColor,
+                      )
+                    : buildTextButton(
+                        MaterialCommunityIcons.google_plus,
+                        'Log in with Google',
+                        AppColors.googleIconColor,
+                      ),
+              ],
+            ),
           ),
         ),
       ),

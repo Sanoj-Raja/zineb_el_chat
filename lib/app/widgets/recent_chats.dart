@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zineb_el_chat/app/core/constants/app_colors.dart';
 import 'package:zineb_el_chat/app/data/models/message_model.dart';
 
 class RecentChats extends StatelessWidget {
@@ -7,7 +8,7 @@ class RecentChats extends StatelessWidget {
     return Expanded(
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColors.lightPinkSplashColor,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30.0),
             topRight: Radius.circular(30.0),
@@ -24,17 +25,16 @@ class RecentChats extends StatelessWidget {
               final Message chat = chats[index];
               return GestureDetector(
                 onTap: () {
-                  print('Go to chat screen button has been clicked.');
+                  print('Any button or widget has been pressed.');
                 },
                 child: Container(
-                  margin: EdgeInsets.only(top: 5.0, bottom: 5.0, right: 20.0),
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                  margin: EdgeInsets.only(
+                      top: 0.0, bottom: 10.0, right: 10.0, left: 10),
+                  padding: EdgeInsets.fromLTRB(4, 10, 20, 10),
                   decoration: BoxDecoration(
-                    color: chat.unread ? Color(0xFFFFEFEE) : Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(20.0),
-                      bottomRight: Radius.circular(20.0),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(40.0),
                     ),
                   ),
                   child: Row(
@@ -53,7 +53,7 @@ class RecentChats extends StatelessWidget {
                               Text(
                                 chat.sender.name,
                                 style: TextStyle(
-                                  color: Colors.grey,
+                                  color: AppColors.darKPinkSplashColor,
                                   fontSize: 15.0,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -64,9 +64,9 @@ class RecentChats extends StatelessWidget {
                                 child: Text(
                                   chat.text,
                                   style: TextStyle(
-                                    color: Colors.blueGrey,
+                                    color: AppColors.darKPinkSplashColor,
                                     fontSize: 15.0,
-                                    fontWeight: FontWeight.w600,
+                                    fontWeight: FontWeight.bold,
                                   ),
                                   overflow: TextOverflow.ellipsis,
                                 ),
@@ -77,15 +77,12 @@ class RecentChats extends StatelessWidget {
                       ),
                       Column(
                         children: <Widget>[
-                          Expanded(
-                            child: Text(
-                              chat.time,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 15.0,
-                                fontWeight: FontWeight.bold,
-                              ),
+                          Text(
+                            chat.time,
+                            style: TextStyle(
+                              color: AppColors.darKPinkSplashColor,
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                           SizedBox(height: 5.0),
@@ -94,7 +91,7 @@ class RecentChats extends StatelessWidget {
                                   width: 40.0,
                                   height: 20.0,
                                   decoration: BoxDecoration(
-                                    color: Theme.of(context).primaryColor,
+                                    color: AppColors.darkBlueActiveIconColor,
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
                                   alignment: Alignment.center,

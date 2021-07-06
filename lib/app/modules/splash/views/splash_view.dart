@@ -1,26 +1,21 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-import 'package:zineb_el_chat/app/routes/app_pages.dart';
-
+import 'package:zineb_el_chat/app/core/constants/app_assets.dart';
+import 'package:zineb_el_chat/app/core/constants/app_colors.dart';
 import '../controllers/splash_controller.dart';
 
 class SplashView extends GetView<SplashController> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('SplashView'),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: InkWell(
-          onTap: () {
-            Get.toNamed(Routes.LOGIN_AND_SIGNUP);
-          },
-          child: Text(
-            'SplashView is working',
-            style: TextStyle(fontSize: 20),
+    controller.onInit();
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: AppColors.lightPinkSplashColor,
+        body: Center(
+          child: Container(
+            height: 250,
+            width: 250,
+            child: Image.asset(AppAssets.splashLogo),
           ),
         ),
       ),

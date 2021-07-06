@@ -13,10 +13,10 @@ class LoginAndSignupView extends GetView<LoginAndSignupController> {
     return SafeArea(
       child: Scaffold(
         bottomNavigationBar: BottomAppBar(
-          color: AppColors.backgroundColor,
+          color: AppColors.whiteBackgroundColor,
           child: bottomGoogleLoginButton(),
         ),
-        backgroundColor: AppColors.backgroundColor,
+        backgroundColor: AppColors.whiteBackgroundColor,
         body: Stack(
           alignment: AlignmentDirectional.bottomCenter,
           children: [
@@ -143,8 +143,8 @@ class LoginAndSignupView extends GetView<LoginAndSignupController> {
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
                                         color: !controller.isSignupScreen.value
-                                            ? AppColors.activeColor
-                                            : AppColors.textColor1),
+                                            ? AppColors.darkBlueActiveIconColor
+                                            : AppColors.darkBlackTextColor),
                                   ),
                                   if (!controller.isSignupScreen.value)
                                     Container(
@@ -168,8 +168,8 @@ class LoginAndSignupView extends GetView<LoginAndSignupController> {
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
                                         color: controller.isSignupScreen.value
-                                            ? AppColors.activeColor
-                                            : AppColors.textColor1),
+                                            ? AppColors.darkBlueActiveIconColor
+                                            : AppColors.darkBlackTextColor),
                                   ),
                                   if (controller.isSignupScreen.value)
                                     Container(
@@ -223,21 +223,29 @@ class LoginAndSignupView extends GetView<LoginAndSignupController> {
                 children: [
                   Checkbox(
                     value: controller.isRememberMe.value,
-                    activeColor: AppColors.textColor2,
+                    activeColor: AppColors.darkBlackTextColor,
                     onChanged: (value) {
                       controller.isRememberMe.value = value;
                     },
                   ),
-                  Text("Remember me",
-                      style:
-                          TextStyle(fontSize: 12, color: AppColors.textColor1))
+                  Text(
+                    "Remember me",
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: AppColors.darkBlackTextColor,
+                    ),
+                  )
                 ],
               ),
               TextButton(
                 onPressed: () {},
-                child: Text("Forgot Password?",
-                    style:
-                        TextStyle(fontSize: 12, color: AppColors.textColor1)),
+                child: Text(
+                  "Forgot Password?",
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: AppColors.darkBlackTextColor,
+                  ),
+                ),
               )
             ],
           )
@@ -286,24 +294,24 @@ class LoginAndSignupView extends GetView<LoginAndSignupController> {
                         margin: EdgeInsets.only(right: 8),
                         decoration: BoxDecoration(
                             color: controller.isMale.value
-                                ? AppColors.textColor2
+                                ? AppColors.darkBlackTextColor
                                 : Colors.transparent,
                             border: Border.all(
                                 width: 1,
                                 color: controller.isMale.value
                                     ? Colors.transparent
-                                    : AppColors.textColor1),
+                                    : AppColors.darkBlackTextColor),
                             borderRadius: BorderRadius.circular(15)),
                         child: Icon(
                           MaterialCommunityIcons.account_outline,
                           color: controller.isMale.value
                               ? Colors.white
-                              : AppColors.iconColor,
+                              : AppColors.greyIconColor,
                         ),
                       ),
                       Text(
                         "Male",
-                        style: TextStyle(color: AppColors.textColor1),
+                        style: TextStyle(color: AppColors.darkBlackTextColor),
                       )
                     ],
                   ),
@@ -324,23 +332,23 @@ class LoginAndSignupView extends GetView<LoginAndSignupController> {
                         decoration: BoxDecoration(
                             color: controller.isMale.value
                                 ? Colors.transparent
-                                : AppColors.textColor2,
+                                : AppColors.darkBlackTextColor,
                             border: Border.all(
                                 width: 1,
                                 color: controller.isMale.value
-                                    ? AppColors.textColor1
+                                    ? AppColors.darkBlackTextColor
                                     : Colors.transparent),
                             borderRadius: BorderRadius.circular(15)),
                         child: Icon(
                           MaterialCommunityIcons.account_outline,
                           color: controller.isMale.value
-                              ? AppColors.iconColor
+                              ? AppColors.greyIconColor
                               : Colors.white,
                         ),
                       ),
                       Text(
                         "Female",
-                        style: TextStyle(color: AppColors.textColor1),
+                        style: TextStyle(color: AppColors.darkBlackTextColor),
                       )
                     ],
                   ),
@@ -356,7 +364,7 @@ class LoginAndSignupView extends GetView<LoginAndSignupController> {
               textAlign: TextAlign.center,
               text: TextSpan(
                 text: "By pressing 'Submit' you agree to our ",
-                style: TextStyle(color: AppColors.textColor2),
+                style: TextStyle(color: AppColors.darkBlackTextColor),
                 children: [
                   TextSpan(
                     text: "\nterm & conditions",
@@ -429,12 +437,12 @@ class LoginAndSignupView extends GetView<LoginAndSignupController> {
                   ? buildTextButton(
                       MaterialCommunityIcons.google_plus,
                       'Sign up with Google',
-                      AppColors.googleIconColor,
+                      AppColors.redGoogleIconColor,
                     )
                   : buildTextButton(
                       MaterialCommunityIcons.google_plus,
                       'Log in with Google',
-                      AppColors.googleIconColor,
+                      AppColors.redGoogleIconColor,
                     ),
             ],
           ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:zineb_el_chat/app/data/models/message_model.dart';
 
 class RecentChats extends StatelessWidget {

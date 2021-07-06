@@ -12,14 +12,16 @@ class LoginAndSignupView extends GetView<LoginAndSignupController> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        bottomNavigationBar: BottomAppBar(
+          color: AppColors.backgroundColor,
+          child: bottomGoogleLoginButton(),
+        ),
         backgroundColor: AppColors.backgroundColor,
         body: Stack(
           alignment: AlignmentDirectional.bottomCenter,
           children: [
             upperTextAndImageContainer(),
             loginAndSignupCard(context),
-            arrowButtonForLoginAndSignup(),
-            bottomGoogleLoginButton()
           ],
         ),
       ),
@@ -98,90 +100,101 @@ class LoginAndSignupView extends GetView<LoginAndSignupController> {
         top: controller.isSignupScreen.value
             ? Get.height * .2
             : Get.height * .25,
-        child: AnimatedContainer(
-          duration: Duration(milliseconds: 700),
-          curve: Curves.bounceInOut,
-          height: controller.isSignupScreen.value ? 380 : 270,
-          padding: EdgeInsets.symmetric(
-            horizontal: 20,
-            vertical: 25,
-          ),
-          width: MediaQuery.of(context).size.width - 40,
-          margin: EdgeInsets.symmetric(horizontal: 20),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(15),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.3),
-                blurRadius: 15,
-                spreadRadius: 5,
+        child: Stack(
+          alignment: AlignmentDirectional.bottomCenter,
+          children: [
+            AnimatedContainer(
+              duration: Duration(milliseconds: 700),
+              curve: Curves.bounceInOut,
+              height: controller.isSignupScreen.value ? 430 : 320,
+              width: Get.width - 40,
+              padding: EdgeInsets.only(
+                bottom: 50,
               ),
-            ],
-          ),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        controller.isSignupScreen.value = false;
-                      },
-                      child: Column(
-                        children: [
-                          Text(
-                            "LOGIN",
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: !controller.isSignupScreen.value
-                                    ? AppColors.activeColor
-                                    : AppColors.textColor1),
-                          ),
-                          if (!controller.isSignupScreen.value)
-                            Container(
-                              margin: EdgeInsets.only(top: 3),
-                              height: 2,
-                              width: 55,
-                              color: Colors.orange,
-                            )
-                        ],
-                      ),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3),
+                      blurRadius: 15,
+                      spreadRadius: 5,
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        controller.isSignupScreen.value = true;
-                      },
-                      child: Column(
-                        children: [
-                          Text(
-                            "SIGNUP",
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                                color: controller.isSignupScreen.value
-                                    ? AppColors.activeColor
-                                    : AppColors.textColor1),
-                          ),
-                          if (controller.isSignupScreen.value)
-                            Container(
-                              margin: EdgeInsets.only(top: 3),
-                              height: 2,
-                              width: 55,
-                              color: Colors.orange,
-                            )
-                        ],
-                      ),
-                    )
                   ],
                 ),
-                if (controller.isSignupScreen.value) buildSignupSection(),
-                if (!controller.isSignupScreen.value) buildLoginSection()
-              ],
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                controller.isSignupScreen.value = false;
+                              },
+                              child: Column(
+                                children: [
+                                  Text(
+                                    "LOGIN",
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: !controller.isSignupScreen.value
+                                            ? AppColors.activeColor
+                                            : AppColors.textColor1),
+                                  ),
+                                  if (!controller.isSignupScreen.value)
+                                    Container(
+                                      margin: EdgeInsets.only(top: 3),
+                                      height: 2,
+                                      width: 55,
+                                      color: Colors.orange,
+                                    )
+                                ],
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                controller.isSignupScreen.value = true;
+                              },
+                              child: Column(
+                                children: [
+                                  Text(
+                                    "SIGNUP",
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold,
+                                        color: controller.isSignupScreen.value
+                                            ? AppColors.activeColor
+                                            : AppColors.textColor1),
+                                  ),
+                                  if (controller.isSignupScreen.value)
+                                    Container(
+                                      margin: EdgeInsets.only(top: 3),
+                                      height: 2,
+                                      width: 55,
+                                      color: Colors.orange,
+                                    )
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                        if (controller.isSignupScreen.value)
+                          buildSignupSection(),
+                        if (!controller.isSignupScreen.value)
+                          buildLoginSection(),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
             ),
-          ),
+            loginAndSignupArrowButton(),
+          ],
         ),
       ),
     );
@@ -257,9 +270,9 @@ class LoginAndSignupView extends GetView<LoginAndSignupController> {
             isEmail: false,
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 10, left: 10),
+            padding: const EdgeInsets.only(top: 10, left: 10, right: 15),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 GestureDetector(
                   onTap: () {
@@ -358,55 +371,44 @@ class LoginAndSignupView extends GetView<LoginAndSignupController> {
     );
   }
 
-  Widget arrowButtonForLoginAndSignup() {
-    return Obx(
-      () => AnimatedPositioned(
-        duration: Duration(milliseconds: 700),
-        curve: Curves.bounceInOut,
-        top: controller.isSignupScreen.value
-            ? Get.height * .65
-            : Get.height * .55,
-        right: 0,
-        left: 0,
-        child: Center(
-          child: InkWell(
-            onTap: controller.onArrowButtonPress,
-            child: Container(
-              height: 90,
-              width: 90,
-              padding: EdgeInsets.all(15),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(50),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(.3),
-                    spreadRadius: 1.5,
-                    blurRadius: 10,
-                  )
-                ],
-              ),
-              child: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      colors: [Colors.orange[200], Colors.red[400]],
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight),
-                  borderRadius: BorderRadius.circular(30),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(.3),
-                      spreadRadius: 1,
-                      blurRadius: 2,
-                      offset: Offset(0, 1),
-                    )
-                  ],
-                ),
-                child: Icon(
-                  Icons.arrow_forward,
-                  color: Colors.white,
-                ),
-              ),
+  Center loginAndSignupArrowButton() {
+    return Center(
+      child: InkWell(
+        onTap: controller.onArrowButtonPress,
+        child: Container(
+          height: 90,
+          width: 90,
+          padding: EdgeInsets.all(15),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(50),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(.3),
+                spreadRadius: 1.5,
+                blurRadius: 10,
+              )
+            ],
+          ),
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  colors: [Colors.orange[200], Colors.red[400]],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight),
+              borderRadius: BorderRadius.circular(30),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(.3),
+                  spreadRadius: 1,
+                  blurRadius: 2,
+                  offset: Offset(0, 1),
+                )
+              ],
+            ),
+            child: Icon(
+              Icons.arrow_forward,
+              color: Colors.white,
             ),
           ),
         ),
@@ -415,31 +417,26 @@ class LoginAndSignupView extends GetView<LoginAndSignupController> {
   }
 
   Widget bottomGoogleLoginButton() {
-    return Positioned(
-      top: Get.height * .85,
-      right: 0,
-      left: 0,
-      child: InkWell(
-        onTap: controller.onArrowButtonPress,
-        child: Container(
-          margin: EdgeInsets.only(right: 20, left: 20, top: 15),
-          child: Obx(
-            () => Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                controller.isSignupScreen.value
-                    ? buildTextButton(
-                        MaterialCommunityIcons.google_plus,
-                        'Sign up with Google',
-                        AppColors.googleIconColor,
-                      )
-                    : buildTextButton(
-                        MaterialCommunityIcons.google_plus,
-                        'Log in with Google',
-                        AppColors.googleIconColor,
-                      ),
-              ],
-            ),
+    return Padding(
+      padding: const EdgeInsets.all(18.0),
+      child: Container(
+        margin: EdgeInsets.only(right: 20, left: 20, top: 15),
+        child: Obx(
+          () => Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              controller.isSignupScreen.value
+                  ? buildTextButton(
+                      MaterialCommunityIcons.google_plus,
+                      'Sign up with Google',
+                      AppColors.googleIconColor,
+                    )
+                  : buildTextButton(
+                      MaterialCommunityIcons.google_plus,
+                      'Log in with Google',
+                      AppColors.googleIconColor,
+                    ),
+            ],
           ),
         ),
       ),
@@ -449,7 +446,9 @@ class LoginAndSignupView extends GetView<LoginAndSignupController> {
 
 TextButton buildTextButton(IconData icon, String title, Color backgroundColor) {
   return TextButton(
-    onPressed: () {},
+    onPressed: () {
+      print('button has been clicked.');
+    },
     style: TextButton.styleFrom(
         side: BorderSide(width: 1, color: Colors.grey),
         minimumSize: Size(Get.width * .8, Get.height * .06),

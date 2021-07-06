@@ -44,9 +44,9 @@ class HomeView extends GetView<HomeController> {
         ),
         child: Column(
           children: <Widget>[
-            // SizedBox(
-            //   height: 4,
-            // ),
+            SizedBox(
+              height: 4,
+            ),
             RecentChats(),
           ],
         ),

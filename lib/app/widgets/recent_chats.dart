@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:zineb_el_chat/app/core/constants/app_colors.dart';
 import 'package:zineb_el_chat/app/data/models/message_model.dart';
+import 'package:zineb_el_chat/app/routes/app_pages.dart';
 
 class RecentChats extends StatelessWidget {
   @override
@@ -25,7 +27,10 @@ class RecentChats extends StatelessWidget {
               final Message chat = chats[index];
               return GestureDetector(
                 onTap: () {
-                  print('Any button or widget has been pressed.');
+                  Get.toNamed(
+                    Routes.CHAT,
+                    arguments: chat.sender,
+                  );
                 },
                 child: Container(
                   margin: EdgeInsets.only(

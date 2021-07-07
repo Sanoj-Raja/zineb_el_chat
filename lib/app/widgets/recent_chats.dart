@@ -91,7 +91,7 @@ class RecentChats extends StatelessWidget {
                                   width: 40.0,
                                   height: 20.0,
                                   decoration: BoxDecoration(
-                                    color: AppColors.darkBlueActiveIconColor,
+                                    color: AppColors.lightBlueInactiveIconColor,
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
                                   alignment: Alignment.center,

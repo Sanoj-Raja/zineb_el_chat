@@ -15,15 +15,16 @@ class HomeView extends GetView<HomeController> {
         leading: IconButton(
           icon: Icon(Icons.menu),
           iconSize: 30.0,
-          color: AppColors.darKPinkSplashColor,
+          color: AppColors.lightBlueInactiveIconColor,
           onPressed: () {},
         ),
+        centerTitle: true,
         title: Text(
           'Zineb El Chat',
           style: TextStyle(
-            fontSize: 24.0,
+            fontSize: 22.0,
             fontWeight: FontWeight.bold,
-            color: AppColors.darKPinkSplashColor,
+            color: AppColors.lightBlueInactiveIconColor,
           ),
         ),
         elevation: 1.0,
@@ -31,7 +32,7 @@ class HomeView extends GetView<HomeController> {
           IconButton(
             icon: Icon(Icons.logout),
             iconSize: 30.0,
-            color: AppColors.darKPinkSplashColor,
+            color: AppColors.lightBlueInactiveIconColor,
             onPressed: () {
               print('Logout has been clicked.');
             },

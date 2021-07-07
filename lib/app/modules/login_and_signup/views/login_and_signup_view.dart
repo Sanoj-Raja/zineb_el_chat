@@ -131,7 +131,7 @@ class LoginAndSignupView extends GetView<LoginAndSignupController> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            GestureDetector(
+                            InkWell(
                               onTap: () {
                                 controller.isSignupScreen.value = false;
                               },
@@ -156,7 +156,7 @@ class LoginAndSignupView extends GetView<LoginAndSignupController> {
                                 ],
                               ),
                             ),
-                            GestureDetector(
+                            InkWell(
                               onTap: () {
                                 controller.isSignupScreen.value = true;
                               },
@@ -282,77 +282,11 @@ class LoginAndSignupView extends GetView<LoginAndSignupController> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                GestureDetector(
-                  onTap: () {
-                    controller.isMale.value = true;
-                  },
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 30,
-                        height: 30,
-                        margin: EdgeInsets.only(right: 8),
-                        decoration: BoxDecoration(
-                            color: controller.isMale.value
-                                ? AppColors.darkBlackTextColor
-                                : Colors.transparent,
-                            border: Border.all(
-                                width: 1,
-                                color: controller.isMale.value
-                                    ? Colors.transparent
-                                    : AppColors.darkBlackTextColor),
-                            borderRadius: BorderRadius.circular(15)),
-                        child: Icon(
-                          MaterialCommunityIcons.account_outline,
-                          color: controller.isMale.value
-                              ? Colors.white
-                              : AppColors.greyIconColor,
-                        ),
-                      ),
-                      Text(
-                        "Male",
-                        style: TextStyle(color: AppColors.darkBlackTextColor),
-                      )
-                    ],
-                  ),
-                ),
+                selectMaleGender(),
                 SizedBox(
                   width: 30,
                 ),
-                GestureDetector(
-                  onTap: () {
-                    controller.isMale.value = false;
-                  },
-                  child: Row(
-                    children: [
-                      Container(
-                        width: 30,
-                        height: 30,
-                        margin: EdgeInsets.only(right: 8),
-                        decoration: BoxDecoration(
-                            color: controller.isMale.value
-                                ? Colors.transparent
-                                : AppColors.darkBlackTextColor,
-                            border: Border.all(
-                                width: 1,
-                                color: controller.isMale.value
-                                    ? AppColors.darkBlackTextColor
-                                    : Colors.transparent),
-                            borderRadius: BorderRadius.circular(15)),
-                        child: Icon(
-                          MaterialCommunityIcons.account_outline,
-                          color: controller.isMale.value
-                              ? AppColors.greyIconColor
-                              : Colors.white,
-                        ),
-                      ),
-                      Text(
-                        "Female",
-                        style: TextStyle(color: AppColors.darkBlackTextColor),
-                      )
-                    ],
-                  ),
-                ),
+                selectFemaleGender(),
               ],
             ),
           ),
@@ -374,6 +308,86 @@ class LoginAndSignupView extends GetView<LoginAndSignupController> {
               ),
             ),
           ),
+        ],
+      ),
+    );
+  }
+
+  InkWell selectMaleGender() {
+    return InkWell(
+      onTap: () {
+        controller.isMale.value = true;
+      },
+      child: Row(
+        children: [
+          Container(
+            width: 30,
+            height: 30,
+            margin: EdgeInsets.only(right: 8),
+            decoration: BoxDecoration(
+              border: Border.all(
+                width: 1.2,
+                color: !controller.isMale.value
+                    ? AppColors.darkBlackTextColor
+                    : AppColors.darkBlueActiveIconColor,
+              ),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Icon(
+              MaterialCommunityIcons.human_male,
+              color: !controller.isMale.value
+                  ? AppColors.darkBlackTextColor
+                  : AppColors.darkBlueActiveIconColor,
+            ),
+          ),
+          Text(
+            'Male',
+            style: TextStyle(
+              color: !controller.isMale.value
+                  ? AppColors.darkBlackTextColor
+                  : AppColors.darkBlueActiveIconColor,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  InkWell selectFemaleGender() {
+    return InkWell(
+      onTap: () {
+        controller.isMale.value = false;
+      },
+      child: Row(
+        children: [
+          Container(
+            width: 30,
+            height: 30,
+            margin: EdgeInsets.only(right: 8),
+            decoration: BoxDecoration(
+              border: Border.all(
+                width: 1.2,
+                color: controller.isMale.value
+                    ? AppColors.darkBlackTextColor
+                    : AppColors.darkBlueActiveIconColor,
+              ),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Icon(
+              MaterialCommunityIcons.human_female,
+              color: controller.isMale.value
+                  ? AppColors.darkBlackTextColor
+                  : AppColors.darkBlueActiveIconColor,
+            ),
+          ),
+          Text(
+            'Female',
+            style: TextStyle(
+              color: controller.isMale.value
+                  ? AppColors.darkBlackTextColor
+                  : AppColors.darkBlueActiveIconColor,
+            ),
+          )
         ],
       ),
     );
@@ -428,7 +442,6 @@ class LoginAndSignupView extends GetView<LoginAndSignupController> {
     return Padding(
       padding: const EdgeInsets.all(18.0),
       child: Container(
-        margin: EdgeInsets.only(right: 20, left: 20, top: 15),
         child: Obx(
           () => Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -444,6 +457,7 @@ class LoginAndSignupView extends GetView<LoginAndSignupController> {
                       'Log in with Google',
                       AppColors.redGoogleIconColor,
                     ),
+              // Text('CLick')
             ],
           ),
         ),

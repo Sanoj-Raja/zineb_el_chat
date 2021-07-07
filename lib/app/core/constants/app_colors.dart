@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const Color darkBlackTextColor = Color(0XFFA7BCC7);
+  static const Color darkBlackTextColor = Color.fromRGBO(0, 0, 0, 1);
   static const Color greyIconColor = Color(0xFFB6C7D1);
   static const Color lightBlueInactiveIconColor = Color(0xFF3B5999);
   static const Color darkBlueActiveIconColor = Color(0xFF09126C);

@@ -9,9 +9,9 @@ class SplashController extends GetxController {
     Future.delayed(Duration(milliseconds: 2500)).then(
       (_) {
         if (isUserLogedIn.value)
-          Get.offAndToNamed(Routes.HOME);
+          Get.offNamed(Routes.HOME);
         else
-          Get.toNamed(Routes.LOGIN_AND_SIGNUP);
+          Get.offNamed(Routes.LOGIN_AND_SIGNUP);
       },
     );
   }

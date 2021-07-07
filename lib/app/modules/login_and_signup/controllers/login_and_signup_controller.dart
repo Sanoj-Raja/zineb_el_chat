@@ -19,7 +19,7 @@ class LoginAndSignupController extends GetxController {
   void onClose() {}
 
   void onArrowButtonPress() {
-    Get.toNamed(Routes.HOME);
+    Get.offNamed(Routes.HOME);
     print('Arrow Button has been pressed.');
   }
 }

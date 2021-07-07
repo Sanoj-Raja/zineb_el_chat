@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:zineb_el_chat/app/core/constants/app_colors.dart';
 import 'package:zineb_el_chat/app/data/models/message_model.dart';
+import 'package:zineb_el_chat/app/routes/app_pages.dart';
 
 class ActiveMembers extends StatelessWidget {
   @override
@@ -43,7 +45,10 @@ class ActiveMembers extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 return GestureDetector(
                   onTap: () {
-                    print('Active Member Avtar has been pressed.');
+                    Get.toNamed(
+                      Routes.CHAT,
+                      arguments: favorites[index],
+                    );
                   },
                   child: Padding(
                     padding: EdgeInsets.all(10.0),

@@ -10,13 +10,13 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.lightPinkSplashColor,
+      backgroundColor: AppColors.secondaryAppThemeColor,
       appBar: AppBar(
-        backgroundColor: AppColors.lightPinkSplashColor,
+        backgroundColor: AppColors.secondaryAppThemeColor,
         leading: IconButton(
           icon: Icon(Icons.menu),
           iconSize: 30.0,
-          color: AppColors.lightBlueInactiveIconColor,
+          color: AppColors.primaryAppThemeColor,
           onPressed: () {},
         ),
         centerTitle: true,
@@ -25,7 +25,7 @@ class HomeView extends GetView<HomeController> {
           style: TextStyle(
             fontSize: 22.0,
             fontWeight: FontWeight.bold,
-            color: AppColors.lightBlueInactiveIconColor,
+            color: AppColors.primaryAppThemeColor,
           ),
         ),
         elevation: 1.0,
@@ -33,7 +33,7 @@ class HomeView extends GetView<HomeController> {
           IconButton(
             icon: Icon(Icons.logout),
             iconSize: 30.0,
-            color: AppColors.lightBlueInactiveIconColor,
+            color: AppColors.primaryAppThemeColor,
             onPressed: () {
               print('Logout has been clicked.');
               Get.offAllNamed(Routes.LOGIN_AND_SIGNUP);
@@ -43,7 +43,7 @@ class HomeView extends GetView<HomeController> {
       ),
       body: Container(
         decoration: BoxDecoration(
-          color: AppColors.lightPinkSplashColor,
+          color: AppColors.secondaryAppThemeColor,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30.0),
             topRight: Radius.circular(30.0),

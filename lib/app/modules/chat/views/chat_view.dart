@@ -11,14 +11,14 @@ class ChatView extends GetView<ChatController> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         leading: BackButton(
-          color: AppColors.lightBlueInactiveIconColor,
+          color: AppColors.primaryAppThemeColor,
         ),
         centerTitle: true,
-        backgroundColor: AppColors.lightPinkSplashColor,
+        backgroundColor: AppColors.secondaryAppThemeColor,
         title: Text(
           controller.user.name,
           style: TextStyle(
-            color: AppColors.lightBlueInactiveIconColor,
+            color: AppColors.primaryAppThemeColor,
             fontSize: 22.0,
             fontWeight: FontWeight.bold,
           ),
@@ -28,7 +28,7 @@ class ChatView extends GetView<ChatController> {
           IconButton(
             icon: Icon(Icons.more_horiz),
             iconSize: 30.0,
-            color: AppColors.lightBlueInactiveIconColor,
+            color: AppColors.primaryAppThemeColor,
             onPressed: () {},
           ),
         ],
@@ -87,8 +87,8 @@ class ChatView extends GetView<ChatController> {
       width: Get.width * 0.75,
       decoration: BoxDecoration(
         color: isMe
-            ? AppColors.darKPinkSplashColor
-            : AppColors.lightPinkSplashColor,
+            ? AppColors.primaryAppThemeColor
+            : AppColors.secondaryAppThemeColor,
         borderRadius: isMe
             ? BorderRadius.only(
                 topLeft: Radius.circular(15.0),
@@ -105,7 +105,7 @@ class ChatView extends GetView<ChatController> {
           Text(
             message.time,
             style: TextStyle(
-              color: isMe ? Colors.white : AppColors.lightBlueInactiveIconColor,
+              color: isMe ? Colors.white : AppColors.primaryAppThemeColor,
               fontSize: 12.0,
               fontWeight: FontWeight.w600,
             ),
@@ -114,7 +114,7 @@ class ChatView extends GetView<ChatController> {
           Text(
             message.text,
             style: TextStyle(
-              color: isMe ? Colors.white : AppColors.lightBlueInactiveIconColor,
+              color: isMe ? Colors.white : AppColors.primaryAppThemeColor,
               fontSize: 16.0,
               fontWeight: FontWeight.w600,
             ),
@@ -134,8 +134,8 @@ class ChatView extends GetView<ChatController> {
               : Icon(Icons.favorite_border),
           iconSize: 30.0,
           color: message.isLiked
-              ? AppColors.darKPinkSplashColor
-              : AppColors.lightPinkSplashColor,
+              ? AppColors.primaryAppThemeColor
+              : AppColors.lightInactiveColor,
           onPressed: () {},
         )
       ],
@@ -167,7 +167,7 @@ class ChatView extends GetView<ChatController> {
           IconButton(
             icon: Icon(Icons.send),
             iconSize: 25.0,
-            color: AppColors.darKPinkSplashColor,
+            color: AppColors.primaryAppThemeColor,
             onPressed: () {},
           ),
         ],

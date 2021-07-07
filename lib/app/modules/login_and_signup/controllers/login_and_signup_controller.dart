@@ -4,7 +4,7 @@ import 'package:zineb_el_chat/app/routes/app_pages.dart';
 class LoginAndSignupController extends GetxController {
   RxBool isSignupScreen = true.obs;
   RxBool isMale = true.obs;
-  RxBool isRememberMe = false.obs;
+  RxBool isRememberMe = true.obs;
   @override
   void onInit() {
     super.onInit();

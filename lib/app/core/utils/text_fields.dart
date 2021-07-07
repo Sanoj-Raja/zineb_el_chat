@@ -36,21 +36,23 @@ class UniversalTextField extends StatelessWidget {
         decoration: InputDecoration(
           prefixIcon: Icon(
             icon,
-            color: AppColors.lightBlueInactiveIconColor,
+            color: AppColors.primaryAppThemeColor,
           ),
           enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: AppColors.darkBlackTextColor),
+            borderSide: BorderSide(color: AppColors.primaryAppThemeColor),
             borderRadius: BorderRadius.all(Radius.circular(35.0)),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: AppColors.darkBlackTextColor),
+            borderSide: BorderSide(color: AppColors.primaryAppThemeColor),
             borderRadius: BorderRadius.all(Radius.circular(35.0)),
           ),
           contentPadding: EdgeInsets.all(10),
           hintText: hintText,
-          hintStyle: TextStyle(fontSize: 14, color: AppColors.darkBlackTextColor),
+          hintStyle:
+              TextStyle(fontSize: 14, color: AppColors.primaryAppThemeColor),
           labelText: labelText,
-          labelStyle: TextStyle(fontSize: 14, color: AppColors.darkBlackTextColor),
+          labelStyle:
+              TextStyle(fontSize: 14, color: AppColors.primaryAppThemeColor),
         ),
       ),
     );

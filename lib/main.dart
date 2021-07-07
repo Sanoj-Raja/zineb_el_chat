@@ -31,8 +31,8 @@ void main() async {
         middleText: 'Something went wrong try again later.',
         middleTextStyle: TextStyle(fontSize: 18),
         radius: 5,
-        buttonColor: AppColors.lightBlueInactiveIconColor,
-        confirmTextColor: AppColors.darkBlackTextColor,
+        buttonColor: AppColors.primaryAppThemeColor,
+        confirmTextColor: AppColors.textColor,
         textConfirm: 'Go Back',
         onConfirm: () {
           Get.back();

@@ -8,7 +8,7 @@ class RecentChats extends StatelessWidget {
     return Expanded(
       child: Container(
         decoration: BoxDecoration(
-          color: AppColors.lightPinkSplashColor,
+          color: AppColors.secondaryAppThemeColor,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30.0),
             topRight: Radius.circular(30.0),
@@ -53,7 +53,7 @@ class RecentChats extends StatelessWidget {
                               Text(
                                 chat.sender.name,
                                 style: TextStyle(
-                                  color: AppColors.darKPinkSplashColor,
+                                  color: AppColors.primaryAppThemeColor,
                                   fontSize: 15.0,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -64,7 +64,7 @@ class RecentChats extends StatelessWidget {
                                 child: Text(
                                   chat.text,
                                   style: TextStyle(
-                                    color: AppColors.darKPinkSplashColor,
+                                    color: AppColors.primaryAppThemeColor,
                                     fontSize: 15.0,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -80,7 +80,7 @@ class RecentChats extends StatelessWidget {
                           Text(
                             chat.time,
                             style: TextStyle(
-                              color: AppColors.darKPinkSplashColor,
+                              color: AppColors.primaryAppThemeColor,
                               fontSize: 15.0,
                               fontWeight: FontWeight.bold,
                             ),
@@ -91,7 +91,7 @@ class RecentChats extends StatelessWidget {
                                   width: 40.0,
                                   height: 20.0,
                                   decoration: BoxDecoration(
-                                    color: AppColors.lightBlueInactiveIconColor,
+                                    color: AppColors.primaryAppThemeColor,
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
                                   alignment: Alignment.center,

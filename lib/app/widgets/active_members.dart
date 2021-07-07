@@ -19,7 +19,7 @@ class ActiveMembers extends StatelessWidget {
                 Text(
                   'Active Members',
                   style: TextStyle(
-                    color: AppColors.darKPinkSplashColor,
+                    color: AppColors.primaryAppThemeColor,
                     fontSize: 18.0,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 1.0,
@@ -30,7 +30,7 @@ class ActiveMembers extends StatelessWidget {
                     Icons.more_horiz,
                   ),
                   iconSize: 30.0,
-                  color: AppColors.darKPinkSplashColor,
+                  color: AppColors.primaryAppThemeColor,
                   onPressed: () {},
                 ),
               ],
@@ -63,7 +63,7 @@ class ActiveMembers extends StatelessWidget {
                         Text(
                           favorites[index].name,
                           style: TextStyle(
-                            color: AppColors.darKPinkSplashColor,
+                            color: AppColors.primaryAppThemeColor,
                             fontSize: 16.0,
                             fontWeight: FontWeight.w600,
                           ),

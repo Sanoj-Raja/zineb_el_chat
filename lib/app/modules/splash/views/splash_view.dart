@@ -10,7 +10,7 @@ class SplashView extends GetView<SplashController> {
     controller.onInit();
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColors.lightPinkSplashColor,
+        backgroundColor: AppColors.secondaryAppThemeColor,
         body: Center(
           child: Container(
             height: 250,

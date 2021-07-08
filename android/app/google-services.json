@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "513206858508",
+    "project_id": "zineb-el-chat",
+    "storage_bucket": "zineb-el-chat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:513206858508:android:34ae2bc6e9d7ddde968f29",
+        "android_client_info": {
+          "package_name": "com.example.zineb_el_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "513206858508-tpc6sf4ite07fg5t45ogvk1oa70pe7n9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.zineb_el_chat",
+            "certificate_hash": "7c96df86627b7758eeb35dd8ef9e090340011b49"
+          }
+        },
+        {
+          "client_id": "513206858508-1fbeajq3h1o2up7takvfrihph5irqhd8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2xJVtxsMS35caf4nmZJtOJVpEW9HF_BA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "513206858508-1fbeajq3h1o2up7takvfrihph5irqhd8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

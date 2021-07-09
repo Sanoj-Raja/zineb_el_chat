@@ -472,43 +472,42 @@ class LoginAndSignupView extends GetView<LoginAndSignupController> {
       ),
     );
   }
-}
 
-TextButton buildTextButton(IconData icon, String title, Color backgroundColor) {
-  return TextButton(
-    onPressed: () {
-      print('button has been clicked.');
-    },
-    style: TextButton.styleFrom(
-        side: BorderSide(
-          width: 1,
-          color: AppColors.secondaryAppThemeColor,
-        ),
-        minimumSize: Size(
-          Get.width * .8,
-          Get.height * .06,
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-        primary: Colors.white,
-        backgroundColor: backgroundColor),
-    child: Row(
-      children: [
-        Icon(
-          icon,
-        ),
-        SizedBox(
-          width: 5,
-        ),
-        Text(
-          title,
-          style: Get.textTheme.headline6.copyWith(
-            fontSize: 18,
-            color: Colors.white,
+  TextButton buildTextButton(
+      IconData icon, String title, Color backgroundColor) {
+    return TextButton(
+      onPressed: controller.sendDataToDatabase,
+      style: TextButton.styleFrom(
+          side: BorderSide(
+            width: 1,
+            color: AppColors.secondaryAppThemeColor,
           ),
-        )
-      ],
-    ),
-  );
+          minimumSize: Size(
+            Get.width * .8,
+            Get.height * .06,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          primary: Colors.white,
+          backgroundColor: backgroundColor),
+      child: Row(
+        children: [
+          Icon(
+            icon,
+          ),
+          SizedBox(
+            width: 5,
+          ),
+          Text(
+            title,
+            style: Get.textTheme.headline6.copyWith(
+              fontSize: 18,
+              color: Colors.white,
+            ),
+          )
+        ],
+      ),
+    );
+  }
 }

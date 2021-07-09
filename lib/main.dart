@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -7,8 +8,9 @@ import 'package:zineb_el_chat/app/core/constants/app_colors.dart';
 import 'app/routes/app_pages.dart';
 
 void main() async {
-  await GetStorage.init();
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  await GetStorage.init();
   await SystemChrome.setPreferredOrientations(
     [DeviceOrientation.portraitUp],
   );
@@ -27,7 +29,7 @@ void main() async {
     (dynamic error, StackTrace stackTrace) {
       print('<<----------ERROR--------->> \n$error $stackTrace');
       Get.defaultDialog(
-        title: 'Unknown Error Occured.',
+        title: 'Unknown Error Occured by Runzone.',
         middleText: 'Something went wrong try again later.',
         middleTextStyle: TextStyle(fontSize: 18),
         radius: 5,

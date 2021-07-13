@@ -206,58 +206,64 @@ class LoginAndSignupView extends GetView<LoginAndSignupController> {
   Container buildLoginSection() {
     return Container(
       margin: EdgeInsets.only(top: 20),
-      child: Column(
-        children: [
-          UniversalTextField(
+      child: Form(
+        key: controller.loginKey,
+        child: Column(
+          children: [
+            UniversalTextField(
               icon: Icons.mail_outline,
               labelText: "Email",
               isPassword: false,
-              isEmail: true),
-          UniversalTextField(
-            icon: MaterialCommunityIcons.lock_outline,
-            labelText: "Email",
-            isPassword: true,
-            isEmail: false,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  Theme(
-                    data: Get.theme.copyWith(
-                      unselectedWidgetColor: AppColors.primaryAppThemeColor,
+              controller: controller.emailTextController,
+              isEmail: true,
+            ),
+            UniversalTextField(
+              icon: MaterialCommunityIcons.lock_outline,
+              labelText: "Password",
+              isPassword: true,
+              isEmail: false,
+              controller: controller.passwordTextController,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Theme(
+                      data: Get.theme.copyWith(
+                        unselectedWidgetColor: AppColors.primaryAppThemeColor,
+                      ),
+                      child: Checkbox(
+                        value: controller.isRememberMe.value,
+                        activeColor: AppColors.primaryAppThemeColor,
+                        onChanged: (value) {
+                          controller.isRememberMe.value = value;
+                        },
+                      ),
                     ),
-                    child: Checkbox(
-                      value: controller.isRememberMe.value,
-                      activeColor: AppColors.primaryAppThemeColor,
-                      onChanged: (value) {
-                        controller.isRememberMe.value = value;
-                      },
-                    ),
-                  ),
-                  Text(
-                    "Remember Me",
+                    Text(
+                      "Remember Me",
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: AppColors.primaryAppThemeColor,
+                      ),
+                    )
+                  ],
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    "Forgot Password?",
                     style: TextStyle(
                       fontSize: 12,
                       color: AppColors.primaryAppThemeColor,
                     ),
-                  )
-                ],
-              ),
-              TextButton(
-                onPressed: () {},
-                child: Text(
-                  "Forgot Password?",
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: AppColors.primaryAppThemeColor,
                   ),
-                ),
-              )
-            ],
-          )
-        ],
+                )
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
@@ -265,58 +271,64 @@ class LoginAndSignupView extends GetView<LoginAndSignupController> {
   Container buildSignupSection() {
     return Container(
       margin: EdgeInsets.only(top: 20),
-      child: Column(
-        children: [
-          UniversalTextField(
-            icon: MaterialCommunityIcons.account_outline,
-            labelText: "User Name",
-            isPassword: false,
-            isEmail: false,
-          ),
-          UniversalTextField(
-            icon: MaterialCommunityIcons.email_outline,
-            labelText: "Email",
-            isPassword: false,
-            isEmail: true,
-          ),
-          UniversalTextField(
-            icon: MaterialCommunityIcons.lock_outline,
-            labelText: "Password",
-            isPassword: true,
-            isEmail: false,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10, left: 10, right: 15),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                selectMaleGender(),
-                SizedBox(
-                  width: 30,
-                ),
-                selectFemaleGender(),
-              ],
+      child: Form(
+        key: controller.signUpKey,
+        child: Column(
+          children: [
+            UniversalTextField(
+              icon: MaterialCommunityIcons.account_outline,
+              labelText: "User Name",
+              isPassword: false,
+              isEmail: false,
+              controller: controller.userNameTextController,
             ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          LimitedBox(
-            child: RichText(
-              textAlign: TextAlign.center,
-              text: TextSpan(
-                text: "By pressing 'Button' you agree to our ",
-                style: TextStyle(color: AppColors.textColor),
+            UniversalTextField(
+              icon: MaterialCommunityIcons.email_outline,
+              labelText: "Email",
+              isPassword: false,
+              controller: controller.emailTextController,
+              isEmail: true,
+            ),
+            UniversalTextField(
+              icon: MaterialCommunityIcons.lock_outline,
+              labelText: "Password",
+              isPassword: true,
+              isEmail: false,
+              controller: controller.passwordTextController,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 10, left: 10, right: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  TextSpan(
-                    text: "\nTerm & Conditions.",
-                    style: TextStyle(color: AppColors.primaryAppThemeColor),
+                  selectMaleGender(),
+                  SizedBox(
+                    width: 30,
                   ),
+                  selectFemaleGender(),
                 ],
               ),
             ),
-          ),
-        ],
+            SizedBox(
+              height: 20,
+            ),
+            LimitedBox(
+              child: RichText(
+                textAlign: TextAlign.center,
+                text: TextSpan(
+                  text: "By pressing 'Button' you agree to our ",
+                  style: TextStyle(color: AppColors.textColor),
+                  children: [
+                    TextSpan(
+                      text: "\nTerm & Conditions.",
+                      style: TextStyle(color: AppColors.primaryAppThemeColor),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

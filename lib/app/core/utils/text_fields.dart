@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:zineb_el_chat/app/core/constants/app_colors.dart';
 
 class UniversalTextField extends StatelessWidget {
+  final TextEditingController controller;
   final IconData icon;
   final String hintText;
   final String labelText;
@@ -10,11 +12,12 @@ class UniversalTextField extends StatelessWidget {
 
   const UniversalTextField({
     Key key,
-    this.icon,
+    @required this.controller,
+    @required this.icon,
     this.hintText,
-    this.isPassword,
-    this.isEmail,
-    this.labelText,
+    @required this.isPassword,
+    @required this.isEmail,
+    @required this.labelText,
   }) : super(key: key);
 
   @override
@@ -22,16 +25,21 @@ class UniversalTextField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8.0),
       child: TextFormField(
+        controller: controller,
         obscureText: isPassword,
         keyboardType: isEmail ? TextInputType.emailAddress : TextInputType.text,
         validator: (value) {
           return isPassword
               ? value.length >= 8
                   ? null
-                  : 'Please enter valid password!'
-              : value.length >= 3
-                  ? null
-                  : 'Please enter a correct $labelText!';
+                  : 'Password must be 8 characters!'
+              : isEmail
+                  ? GetUtils.isEmail(value)
+                      ? null
+                      : 'Please enter a valid email address.'
+                  : value.length >= 3
+                      ? null
+                      : 'Please enter a correct $labelText!';
         },
         decoration: InputDecoration(
           prefixIcon: Icon(

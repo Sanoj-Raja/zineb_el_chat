@@ -30,7 +30,10 @@ class LoginAndSignupController extends GetxController {
   void onClose() {}
 
   void onArrowButtonPress() {
-    Get.offNamed(Routes.HOME);
+    if (isSignupScreen.value) if (signUpKey.currentState.validate())
+      Get.offNamed(Routes.HOME);
+    if (!isSignupScreen.value) if (loginKey.currentState.validate())
+      Get.offNamed(Routes.HOME);
     print('Arrow Button has been pressed.');
   }
 

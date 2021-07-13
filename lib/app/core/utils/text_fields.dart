@@ -42,17 +42,27 @@ class UniversalTextField extends StatelessWidget {
                       : 'Please enter a correct $labelText!';
         },
         decoration: InputDecoration(
-          prefixIcon: Icon(
-            icon,
-            color: AppColors.primaryAppThemeColor,
-          ),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: AppColors.primaryAppThemeColor),
-            borderRadius: BorderRadius.all(Radius.circular(35.0)),
+            borderRadius: BorderRadius.all(
+              Radius.circular(35.0),
+            ),
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(color: AppColors.primaryAppThemeColor),
-            borderRadius: BorderRadius.all(Radius.circular(35.0)),
+            borderRadius: BorderRadius.all(
+              Radius.circular(35.0),
+            ),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.primaryAppThemeColor),
+            borderRadius: BorderRadius.all(
+              Radius.circular(35.0),
+            ),
+          ),
+          prefixIcon: Icon(
+            icon,
+            color: AppColors.primaryAppThemeColor,
           ),
           contentPadding: EdgeInsets.all(10),
           hintText: hintText,

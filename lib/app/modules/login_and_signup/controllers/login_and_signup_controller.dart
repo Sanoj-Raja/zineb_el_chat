@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:zineb_el_chat/app/core/utils/firebase_error_formatter.dart';
 import 'package:zineb_el_chat/app/routes/app_pages.dart';
 
 class LoginAndSignupController extends GetxController {
@@ -30,11 +31,49 @@ class LoginAndSignupController extends GetxController {
   void onClose() {}
 
   void onArrowButtonPress() {
-    if (isSignupScreen.value) if (signUpKey.currentState.validate())
-      Get.offNamed(Routes.HOME);
-    if (!isSignupScreen.value) if (loginKey.currentState.validate())
-      Get.offNamed(Routes.HOME);
-    print('Arrow Button has been pressed.');
+    // Sign Up with Email & Password.
+    if (isSignupScreen.value) if (signUpKey.currentState.validate()) {
+      auth
+          .createUserWithEmailAndPassword(
+        email: emailTextController.text,
+        password: passwordTextController.text,
+      )
+          .then(
+        (newUser) {
+          print('This is display name ==> ${newUser.user.displayName}');
+          if (newUser != null) Get.offNamed(Routes.HOME);
+        },
+      ).onError(
+        (error, stackTrace) {
+          print('This is error ==> $error');
+          Get.snackbar(
+            FirebaseErrorFormatter.format(error['errorTitle']),
+            FirebaseErrorFormatter.format(error['errorMessage']),
+          );
+        },
+      );
+    }
+    // Sign In with Email & Password.
+    if (!isSignupScreen.value) if (loginKey.currentState.validate()) {
+      auth
+          .signInWithEmailAndPassword(
+        email: emailTextController.text,
+        password: passwordTextController.text,
+      )
+          .then(
+        (user) {
+          if (user != null) Get.offNamed(Routes.HOME);
+        },
+      ).onError(
+        (error, stackTrace) {
+          print('This is error ==> $error');
+          Get.snackbar(
+            FirebaseErrorFormatter.format(error['errorTitle']),
+            FirebaseErrorFormatter.format(error['errorMessage']),
+          );
+        },
+      );
+    }
   }
 
   void sendDataToDatabase() {

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:zineb_el_chat/app/core/constants/app_colors.dart';
-import 'package:zineb_el_chat/app/routes/app_pages.dart';
 import 'package:zineb_el_chat/app/widgets/active_members.dart';
 import 'package:zineb_el_chat/app/widgets/recent_chats.dart';
 import '../controllers/home_controller.dart';
@@ -34,10 +33,7 @@ class HomeView extends GetView<HomeController> {
             icon: Icon(Icons.logout),
             iconSize: 30.0,
             color: AppColors.primaryAppThemeColor,
-            onPressed: () {
-              print('Logout has been clicked.');
-              Get.offAllNamed(Routes.LOGIN_AND_SIGNUP);
-            },
+            onPressed: controller.logoutUser
           ),
         ],
       ),

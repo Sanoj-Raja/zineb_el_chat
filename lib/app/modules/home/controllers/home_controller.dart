@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:zineb_el_chat/app/services/firebase_auth_service.dart';
 
 class HomeController extends GetxController {
   @override
@@ -13,4 +14,8 @@ class HomeController extends GetxController {
 
   @override
   void onClose() {}
+
+  void logoutUser() {
+    FirebaseAuthService.logout();
+  }
 }

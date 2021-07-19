@@ -31,12 +31,16 @@ class LoginAndSignupController extends GetxController {
     // Sign Up with Email & Password.
     if (isSignupScreen.value) if (signUpKey.currentState.validate()) {
       FirebaseAuthService.signUp(
-          emailTextController.text, passwordTextController.text);
+        emailTextController.text,
+        passwordTextController.text,
+      );
     }
     // Sign In with Email & Password.
     if (!isSignupScreen.value) if (loginKey.currentState.validate()) {
       FirebaseAuthService.login(
-          emailTextController.text, passwordTextController.text);
+        emailTextController.text,
+        passwordTextController.text,
+      );
     }
   }
 }

@@ -1,4 +1,3 @@
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:zineb_el_chat/app/services/firebase_auth_service.dart';
@@ -12,7 +11,6 @@ class LoginAndSignupController extends GetxController {
   final passwordTextController = TextEditingController();
   final loginKey = GlobalKey<FormState>();
   final signUpKey = GlobalKey<FormState>();
-  final databaseReference = FirebaseDatabase.instance.reference();
 
   @override
   void onInit() {

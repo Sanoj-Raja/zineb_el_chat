@@ -488,7 +488,9 @@ class LoginAndSignupView extends GetView<LoginAndSignupController> {
   TextButton buildTextButton(
       IconData icon, String title, Color backgroundColor) {
     return TextButton(
-      onPressed: controller.sendDataToDatabase,
+      onPressed: () {
+        print('Google button has been pressed.');
+      },
       style: TextButton.styleFrom(
           side: BorderSide(
             width: 1,
